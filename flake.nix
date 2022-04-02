@@ -20,5 +20,21 @@
           wayland-scanner
         ];
       };
+
+      defaultPackage = pkgs.stdenv.mkDerivation {
+        pname = "grid";
+        version = "0.1.0";
+        src = ./.;
+
+        nativeBuildInputs = with pkgs; [
+          wayland-scanner
+        ];
+
+        buildInputs = with pkgs; [
+          wayland
+        ];
+
+        makeFlags = [ "DESTDIR=" "PREFIX=${placeholder "out"}" ];
+      };
     });
 }

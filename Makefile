@@ -1,5 +1,6 @@
 CC := cc
 SCANNER := wayland-scanner
+PREFIX := /usr/local
 
 CFLAGS := -std=c99 -Og -ggdb
 CFLAGS += -Wall -Wextra -Wpedantic -Wconversion
@@ -24,7 +25,10 @@ grid.o: $(HGEN)
 %.h: %.xml
 	$(SCANNER) client-header < $< > $@
 
+install: all
+	install -m 755 -D grid $(DESTDIR)$(PREFIX)/bin/grid
+
 clean:
 	rm -f *.o grid
 
-.PHONY: clean
+.PHONY: all install clean
