@@ -2,7 +2,7 @@ CC := cc
 SCANNER := wayland-scanner
 PREFIX := /usr/local
 
-CFLAGS := -std=c99 -Og -ggdb
+CFLAGS := -std=c99 -O2
 CFLAGS += -Wall -Wextra -Wpedantic -Wconversion
 LDFLAGS := -lwayland-client
 
